@@ -22,7 +22,7 @@ public class MarblesExperiment {
         }
     }
 
-    public void createStateVector (ComplexVector vector) {
+    public void createStateVector(ComplexVector vector) {
         for (int i = 0; i < n; i++) {
             stateVector.addToMatrix(i, vector.getElement(i, 0));
         }
@@ -36,15 +36,33 @@ public class MarblesExperiment {
         }
     }
 
-    public ComplexVector click(){
+    public ComplexVector clickForward() {
         stateVector = MatrixCalculator.actionOverVector(booleanMatrix, stateVector);
         return stateVector;
     }
 
-    public ComplexVector click(int n){
+    public ComplexVector clickForward(int n) {
         for (int i = 0; i < n; i++) {
-            stateVector = MatrixCalculator.actionOverVector(booleanMatrix, stateVector);   
+            stateVector = MatrixCalculator.actionOverVector(booleanMatrix, stateVector);
         }
         return stateVector;
     }
+
+    public ComplexVector clickBack() {
+        ComplexMatrix transBooleanMatrix = MatrixCalculator.transposedMatrix(booleanMatrix);
+        System.out.println(stateVector );
+        System.out.println("sdafdsfsdf");
+        stateVector = MatrixCalculator.actionOverVector(transBooleanMatrix, stateVector);
+        System.out.println(stateVector);
+        return stateVector;
+    }
+
+    public ComplexVector clickBack(int n){
+        ComplexMatrix transBooleanMatrix = MatrixCalculator.transposedMatrix(booleanMatrix);
+        for (int i = 0; i < n; i++) {
+            stateVector = MatrixCalculator.actionOverVector(transBooleanMatrix, stateVector);
+        }
+        return stateVector;
+    }
+
 }
