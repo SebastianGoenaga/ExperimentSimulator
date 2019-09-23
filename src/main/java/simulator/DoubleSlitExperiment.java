@@ -5,7 +5,7 @@ import model.ComplexMatrix;
 
 public class DoubleSlitExperiment {
 
-    public static ComplexMatrix cracksProb(int number) {
+    public static ComplexMatrix likelihood(int number) {
 		int blancas = (number * 2) + 1;
 		int matsize = 1 + number + blancas;
 		double n1 = 1 / (float) number;
@@ -18,7 +18,6 @@ public class DoubleSlitExperiment {
 				 mat1.addToMatrix(i, j, new Complex(0, 0));
 			}
 		}
-
 		for (int i = 0; i < mat1.getN(); i++) {
 			for (int j = 0; j < mat1.getM(); j++) {
                 
@@ -36,7 +35,6 @@ public class DoubleSlitExperiment {
 				if (i == j && i > number && j > number) {
 					mat1.addToMatrix(i, j, new Complex(1, 0));
 				}
-
 			}
 		}
 		return mat1;

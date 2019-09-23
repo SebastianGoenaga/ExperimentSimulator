@@ -50,10 +50,7 @@ public class MarblesExperiment {
 
     public ComplexVector clickBack() {
         ComplexMatrix transBooleanMatrix = MatrixCalculator.transposedMatrix(booleanMatrix);
-        System.out.println(stateVector );
-        System.out.println("sdafdsfsdf");
         stateVector = MatrixCalculator.actionOverVector(transBooleanMatrix, stateVector);
-        System.out.println(stateVector);
         return stateVector;
     }
 
