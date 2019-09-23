@@ -19,7 +19,13 @@
         <dependency>
             <groupId>com.github.SebastianGoenaga</groupId>
             <artifactId>MatrixComplexCalculator</artifactId>
-            <version>4148520034</version>
+            <version>58108f0ac59b0b7f8ab5fb6310d42570761a9d6c</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.5.1</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

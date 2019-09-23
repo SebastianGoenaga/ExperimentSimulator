@@ -36,8 +36,9 @@ public class MarblesExperiment {
         }
     }
 
-    public ComplexMatrix click(){
+    public ComplexVector click(){
         stateVector = MatrixCalculator.actionOverVector(booleanMatrix, stateVector);
+        return stateVector;
     }
 
 
