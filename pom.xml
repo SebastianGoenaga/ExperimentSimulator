@@ -40,7 +40,7 @@
         <dependency>
             <groupId>com.github.SebastianGoenaga</groupId>
             <artifactId>MatrixComplexCalculator</artifactId>
-            <version>58108f0ac59b0b7f8ab5fb6310d42570761a9d6c</version>
+            <version>master-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
