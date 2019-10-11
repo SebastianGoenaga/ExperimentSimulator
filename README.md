@@ -56,7 +56,7 @@ A continuación veras los pasos a seguir para la instalación del software
     </dependencies>
     ~~~
 
-2. A continución ya debería ser capaz de usar la librería completa como se muestra en la siguiente imagen de ejemplo. Tiene dos en concreto para utilizar, la de `MarblesExperiment` y `DoubleSlitExperiment`.
+2. A continución ya debería ser capaz de usar la librería completa como se muestra en la siguiente imagen de ejemplo. Tiene dos en concreto para utilizar, la de `MarblesExperiment` y `SlitsExperiment`.
 
     ![prueba](img/prueba.png)
 
@@ -88,10 +88,9 @@ A continuación veras los pasos a seguir para la instalación del software
     assertEquals(answerExpected, answer);
 ~~~
 
-A continuación tiene un ejemplo `DoubleSlitExperiment`.
+A continuación tiene un ejemplo `SlitsExperiment` (Clásico).
 
 ~~~ java
-
     // mat1
     Complex c1 = new Complex(0.5, 0);
     Complex c2 = new Complex(0, 0);
@@ -165,13 +164,99 @@ A continuación tiene un ejemplo `DoubleSlitExperiment`.
     answerExpected.addToMatrix(7, 6, c2);
     answerExpected.addToMatrix(7, 7, c3);
 
-    ComplexMatrix answer = DoubleSlitExperiment.likelihood(2);
+    ComplexMatrix answer = SlitsExperiment.likeliHood(2);
 ~~~
+
+A continuación tiene un ejemplo `SlitsExperiment` (Cuántico).
+
+~~~ java
+    ComplexMatrix adjacencyMatrix = new ComplexMatrix(8, 8);
+
+    // math1
+    Complex c1 = new Complex(1/Math.sqrt(2), 0);
+    Complex c2 = new Complex(0, 0);
+    Complex c3 = new Complex(1, 0);
+    Complex c4 = new Complex(-1/Math.sqrt(6), 1/Math.sqrt(6));
+    Complex c5 = new Complex(-1/Math.sqrt(6), -1/Math.sqrt(6));
+    Complex c6 = new Complex(1/Math.sqrt(6), -1/Math.sqrt(6));
+
+    // add
+
+    adjacencyMatrix.addToMatrix(0, 0, c2);
+    adjacencyMatrix.addToMatrix(0, 1, c2);
+    adjacencyMatrix.addToMatrix(0, 2, c2);
+    adjacencyMatrix.addToMatrix(0, 3, c2);
+    adjacencyMatrix.addToMatrix(0, 4, c2);
+    adjacencyMatrix.addToMatrix(0, 5, c2);
+    adjacencyMatrix.addToMatrix(0, 6, c2);
+    adjacencyMatrix.addToMatrix(0, 7, c2);
+    adjacencyMatrix.addToMatrix(1, 0, c1);
+    adjacencyMatrix.addToMatrix(1, 1, c2);
+    adjacencyMatrix.addToMatrix(1, 2, c2);
+    adjacencyMatrix.addToMatrix(1, 3, c2);
+    adjacencyMatrix.addToMatrix(1, 4, c2);
+    adjacencyMatrix.addToMatrix(1, 5, c2);
+    adjacencyMatrix.addToMatrix(1, 6, c2);
+    adjacencyMatrix.addToMatrix(1, 7, c2);
+    adjacencyMatrix.addToMatrix(2, 0, c1);
+    adjacencyMatrix.addToMatrix(2, 1, c2);
+    adjacencyMatrix.addToMatrix(2, 2, c2);
+    adjacencyMatrix.addToMatrix(2, 3, c2);
+    adjacencyMatrix.addToMatrix(2, 4, c2);
+    adjacencyMatrix.addToMatrix(2, 5, c2);
+    adjacencyMatrix.addToMatrix(2, 6, c2);
+    adjacencyMatrix.addToMatrix(2, 7, c2);
+    adjacencyMatrix.addToMatrix(3, 0, c2);
+    adjacencyMatrix.addToMatrix(3, 1, c4);
+    adjacencyMatrix.addToMatrix(3, 2, c2);
+    adjacencyMatrix.addToMatrix(3, 3, c3);
+    adjacencyMatrix.addToMatrix(3, 4, c2);
+    adjacencyMatrix.addToMatrix(3, 5, c2);
+    adjacencyMatrix.addToMatrix(3, 6, c2);
+    adjacencyMatrix.addToMatrix(3, 7, c2);
+    adjacencyMatrix.addToMatrix(4, 0, c2);
+    adjacencyMatrix.addToMatrix(4, 1, c5);
+    adjacencyMatrix.addToMatrix(4, 2, c2);
+    adjacencyMatrix.addToMatrix(4, 3, c2);
+    adjacencyMatrix.addToMatrix(4, 4, c3);
+    adjacencyMatrix.addToMatrix(4, 5, c2);
+    adjacencyMatrix.addToMatrix(4, 6, c2);
+    adjacencyMatrix.addToMatrix(4, 7, c2);
+    adjacencyMatrix.addToMatrix(5, 0, c2);
+    adjacencyMatrix.addToMatrix(5, 1, c6);
+    adjacencyMatrix.addToMatrix(5, 2, c4);
+    adjacencyMatrix.addToMatrix(5, 3, c2);
+    adjacencyMatrix.addToMatrix(5, 4, c2);
+    adjacencyMatrix.addToMatrix(5, 5, c3);
+    adjacencyMatrix.addToMatrix(5, 6, c2);
+    adjacencyMatrix.addToMatrix(5, 7, c2);
+    adjacencyMatrix.addToMatrix(6, 0, c2);
+    adjacencyMatrix.addToMatrix(6, 1, c2);
+    adjacencyMatrix.addToMatrix(6, 2, c5);
+    adjacencyMatrix.addToMatrix(6, 3, c2);
+    adjacencyMatrix.addToMatrix(6, 4, c2);
+    adjacencyMatrix.addToMatrix(6, 5, c2);
+    adjacencyMatrix.addToMatrix(6, 6, c3);
+    adjacencyMatrix.addToMatrix(6, 7, c2);
+    adjacencyMatrix.addToMatrix(7, 0, c2);
+    adjacencyMatrix.addToMatrix(7, 1, c2);
+    adjacencyMatrix.addToMatrix(7, 2, c6);
+    adjacencyMatrix.addToMatrix(7, 3, c2);
+    adjacencyMatrix.addToMatrix(7, 4, c2);
+    adjacencyMatrix.addToMatrix(7, 5, c2);
+    adjacencyMatrix.addToMatrix(7, 6, c2);
+    adjacencyMatrix.addToMatrix(7, 7, c3);
+
+    ComplexMatrix answer = SlitsExperiment.likeliHoods(adjacencyMatrix, 3);
+~~~
+
+Comprobando el funcionamiento del ejemplo anterior, podemos notar que luego de 3 clicks (segundo parametro), el `vector de estado` en la posición 5 es igual a 0.
+![CuanticResult](img/cuanticResult.png)
 
 ### Ingresar casos de prueba
 
-Los siguientes archivos son los que tendrá que modificar si quiere probar otros casos.
-`\src\test\java\simulator\DoubleSlitExperimentTest.java`
+Los siguientes archivos son los que tendrá que modificar si quiere probar otros casos de prueba.
+`\src\test\java\simulator\SlitsExperimentTest.java`
 `\src\test\java\simulator\MarblesExperimentTest.java`
 `\src\test\java\simulator\MultipleSlitExperimentTest.java`
 
