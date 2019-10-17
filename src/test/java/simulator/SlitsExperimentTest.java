@@ -256,7 +256,28 @@ public class SlitsExperimentTest {
 
         ComplexMatrix answer = SlitsExperiment.likeliHoods(adjacencyMatrix, 3);
 
-        System.out.println(answer);
+        ComplexMatrix answerExpected = new ComplexMatrix(8,1);
+
+        Complex c7 = new Complex(0, 0);
+        Complex c8 = new Complex(0, 0);
+        Complex c9 = new Complex(0, 0);
+        Complex c10 = new Complex(-0.2886751345948129, 0.2886751345948129);
+        Complex c11 = new Complex(-0.2886751345948129, -0.2886751345948129);
+        Complex c12 = new Complex(0, 0);
+        Complex c13 = new Complex(-0.2886751345948129, -0.2886751345948129);
+        Complex c14 = new Complex(0.2886751345948129, -0.2886751345948129);
+
+        answerExpected.addToMatrix(0, 0, c7);
+        answerExpected.addToMatrix(1, 0, c8);
+        answerExpected.addToMatrix(2, 0, c9);
+        answerExpected.addToMatrix(3, 0, c10);
+        answerExpected.addToMatrix(4, 0, c11);
+        answerExpected.addToMatrix(5, 0, c12);
+        answerExpected.addToMatrix(6, 0, c13);
+        answerExpected.addToMatrix(7, 0, c14);
+
+        assertEquals(answerExpected.toString(), answer.toString());
+        
     }
 
 }
